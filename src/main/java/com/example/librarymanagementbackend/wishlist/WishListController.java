@@ -2,11 +2,13 @@ package com.example.librarymanagementbackend.wishlist;
 
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @AllArgsConstructor
 @RequestMapping("/wish-list")
+@PreAuthorize("hasRole('USER')")
 public class WishListController {
     private WishListService wishListService;
     @PostMapping

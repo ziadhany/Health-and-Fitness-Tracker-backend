@@ -23,19 +23,6 @@ public class BookController {
 
     private final BookService service;
 
-    @PostMapping
-    public ResponseEntity<?> save(
-            @RequestBody BookRequest request
-    ) {
-        service.save(request);
-        return ResponseEntity.accepted().build();
-    }
-
-    @GetMapping
-    public ResponseEntity<List<Book>> findAllBooks() {
-        return ResponseEntity.ok(service.findAll());
-    }
-
     @GetMapping("/")
     public ResponseEntity<List<Book>> getAllBooks() {
         return ResponseEntity.ok(service.findAll());

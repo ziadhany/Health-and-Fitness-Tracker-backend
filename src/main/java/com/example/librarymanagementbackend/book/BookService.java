@@ -1,6 +1,7 @@
 package com.example.librarymanagementbackend.book;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class BookService {
-
+    @Autowired
     private final BookRepository repository;
 
     public void save(BookRequest request) {

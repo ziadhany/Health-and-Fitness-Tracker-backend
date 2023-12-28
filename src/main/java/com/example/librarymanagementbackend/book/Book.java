@@ -52,10 +52,6 @@ public class Book {
     )
     private Integer createdBy;
 
-    @LastModifiedBy
-    @Column(insertable = false)
-    private Integer lastModifiedBy;
-
     @Setter
     @Getter
     private String title;
