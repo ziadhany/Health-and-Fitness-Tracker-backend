@@ -1,6 +1,5 @@
 package com.example.librarymanagementbackend.user;
 
-import com.example.librarymanagementbackend.book.Book;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -8,6 +7,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.security.Principal;
+import java.util.List;
+import java.util.Optional;
 
 
 @RequiredArgsConstructor
@@ -43,11 +44,15 @@ public class UserService {
         return repository.findById(i).orElseThrow(()->new RuntimeException("user not found"));
     }
 
-    public User findById(int i) {
-        return repository.findById(i).orElseThrow(()->new RuntimeException("user not found"));
+    public List<User> findAll() {
+        return repository.findAll();
     }
+
 
     public User findByUsername(String username) {
         return repository.findByUsername(username);
     }
-}
+
+    public Optional<User> findByEmail(String username) { return repository.findByEmail(username); }
+    }
+

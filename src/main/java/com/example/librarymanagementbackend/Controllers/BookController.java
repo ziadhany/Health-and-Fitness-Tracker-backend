@@ -20,11 +20,6 @@ public class BookController {
 
     private final BookService bookService;
 
-    @PostMapping(value = "/add")
-    public Book addBook(@RequestBody Book book) {
-        return  bookService.saveOrUpdate(book);
-    }
-
     @GetMapping("/")
     public ResponseEntity<List<Book>> getAllBooks() {
         return ResponseEntity.ok(bookService.getBookAll());
