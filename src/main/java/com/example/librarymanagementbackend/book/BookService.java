@@ -12,7 +12,7 @@ public class BookService {
     @Autowired
     private final BookRepository repository;
 
-    public void save(BookRequest request) {
+    public void save(Book request) {
         var book = Book.builder()
                 .id(request.getId())
                 .author(request.getAuthor())

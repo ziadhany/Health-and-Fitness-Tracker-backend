@@ -75,5 +75,11 @@ public class Book {
     @Getter
     private double price;
 
+    @Setter
+    @Getter
+    private double ourPrice;
+
+    private int inStockNumber;
+
 
 }

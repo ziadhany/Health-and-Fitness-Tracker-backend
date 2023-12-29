@@ -1,6 +1,6 @@
 package com.example.librarymanagementbackend.Entity;
 
-import com.example.librarymanagementbackend.book.Book;
+import com.example.librarymanagementbackend.user.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -15,26 +15,21 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-public class Cart{
+public class ShoppingCart {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private int quantity;
-    private BigDecimal subTotal;
-    @OneToOne
-    private Book book;
+    private BigDecimal total;
+
     @Getter
-    @OneToMany(mappedBy = "cartItem")
+    @OneToMany(mappedBy = "shoppingCart", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnore
-    private List<BookToCart> bookToCartItems;
+    private List<Cart> cartItems;
 
-    @ManyToOne
+    @Getter
+    @OneToOne(cascade = CascadeType.ALL)
     @JsonIgnore
-    private ShoppingCart shoppingCart;
-
-    @ManyToOne
-    @JsonIgnore
-    private Order order;
+    private User user;
 
 }

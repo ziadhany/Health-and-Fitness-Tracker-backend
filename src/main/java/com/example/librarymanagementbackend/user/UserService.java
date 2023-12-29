@@ -39,7 +39,15 @@ public class UserService {
     }
 
 
+    public User findById(Integer i) {
+        return repository.findById(i).orElseThrow(()->new RuntimeException("user not found"));
+    }
+
     public User findById(int i) {
         return repository.findById(i).orElseThrow(()->new RuntimeException("user not found"));
+    }
+
+    public User findByUsername(String username) {
+        return repository.findByUsername(username);
     }
 }
