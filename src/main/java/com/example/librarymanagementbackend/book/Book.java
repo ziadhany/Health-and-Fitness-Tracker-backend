@@ -69,6 +69,10 @@ public class Book {
 
     @Setter
     @Getter
+    private String description;
+
+    @Setter
+    @Getter
     private double price;
 
 

@@ -1,17 +1,22 @@
 package com.example.librarymanagementbackend.user;
 
+import com.example.librarymanagementbackend.book.Book;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.security.Principal;
 
-@Service
+
 @RequiredArgsConstructor
+@Service
 public class UserService {
 
     private final PasswordEncoder passwordEncoder;
+
+    @Autowired
     private final UserRepository repository;
     public void changePassword(ChangePasswordRequest request, Principal connectedUser) {
 
@@ -31,5 +36,10 @@ public class UserService {
 
         // save the new password
         repository.save(user);
+    }
+
+
+    public User findById(int i) {
+        return repository.findById(i).orElseThrow(()->new RuntimeException("user not found"));
     }
 }

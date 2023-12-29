@@ -25,29 +25,11 @@ public class BookController {
 
     @GetMapping("/")
     public ResponseEntity<List<Book>> getAllBooks() {
-        return ResponseEntity.ok(service.findAll());
+        return ResponseEntity.ok(service.getBookAll());
     }
     @GetMapping("/{id}")
     public ResponseEntity<Book> getBook(@PathVariable Integer id) {
         return ResponseEntity.ok(service.findBookById(id));
     }
 
-    @PostMapping("/")
-    @PreAuthorize("hasAuthority('admin:create')")
-    public ResponseEntity<Book> createBook(@RequestBody Book book) {
-        return ResponseEntity.ok(service.saveOrUpdate(book));
-    }
-    @PutMapping("/{id}")
-    @PreAuthorize("hasAuthority('admin:update')")
-    public ResponseEntity<Book> updateBook(@PathVariable Integer id, @RequestBody Book book) {
-        book.setId(id);
-        return ResponseEntity.ok(service.saveOrUpdate(book));
-    }
-
-    @DeleteMapping("/{id}")
-    @PreAuthorize("hasAuthority('admin:delete')")
-    public ResponseEntity<Boolean> deleteBook(@PathVariable Integer id) {
-        service.deleteById(id);
-        return ResponseEntity.ok(true);
-    }
 }
